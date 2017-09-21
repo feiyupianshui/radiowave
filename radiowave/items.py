@@ -12,8 +12,10 @@ class RadiowaveItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     #下载链接
-    url = scrapy.Field()
+    dramaurl = scrapy.Field()
     #片名
     dramaname = scrapy.Field()
-    #集数
-    num = scrapy.Field()
+    #种类
+    category = scrapy.Field()
+    #海报
+    imgurl = scrapy.Field()
