@@ -4,19 +4,33 @@ import scrapy
 import re
 from scrapy.spider import CrawlSpider, Rule, Request
 from scrapy.linkextractors import LinkExtractor
-# from scrapy import FormRequest
+from scrapy import FormRequest
 from bs4 import BeautifulSoup
 from radiowave.items import RadiowaveItem
+
+account = 'Q8B1948D90565EAA8F705E7C91E4CAAE6'
+password = '^118667'
 
 class myspider(CrawlSpider):
     name = 'radiowave'
     allowed_domain = ['dbfansub.com']
-    start_urls = ['http://dbfansub.com/']
+    start_urls = ['http://dbfansub.com/user/login/?redirect_to=http%3A%2F%2Fdbfansub.com%2Ftvshow%2F10034.html']
+
+    def parse_start_url(self, response):
+        formdate = {
+            'log': 'Q8B1948D90565EAA8F705E7C91E4CAAE6',
+            'pwd': '^118667',
+            'wp-submit': '登录',
+            'redirect_to': 'http://dbfansub.com/',
+            'testcookie': '1'
+        }
+        return[FormRequest.from_response(response, formdata=formdata, callback=self.after_login)]
 
     rules = (
         Rule(LinkExtractor(allow=('\.html',), deny =('weibo','qq','redirect','login',)), callback = 'parse_item', follow=True),
         #放行可用链接
     )
+
     def parse_item(self,response):
         # print(response.url)
         soup = BeautifulSoup(response.text, 'html.parser')
