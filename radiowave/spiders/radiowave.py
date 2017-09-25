@@ -26,6 +26,9 @@ class myspider(CrawlSpider):
         }
         return[FormRequest.from_response(response, formdata=formdata, callback=self.after_login)]
 
+    def after_login(self,response):
+        pass
+
     rules = (
         Rule(LinkExtractor(allow=('\.html',), deny =('weibo','qq','redirect','login',)), callback = 'parse_item', follow=True),
         #放行可用链接
