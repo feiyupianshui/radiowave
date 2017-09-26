@@ -36,7 +36,6 @@ class myspider(CrawlSpider):
     )
 
     def parse_item(self,response):
-        # print(response.url)
         item = RadiowaveItem()
         soup = BeautifulSoup(response.text, 'html.parser')
         name = soup.find('h1', class_="entry-title h3").get_text()
@@ -45,8 +44,10 @@ class myspider(CrawlSpider):
         item['dramaname'] = name.split('电波字幕组')[0].split(str)[1]
         item['category'] = category
         item['imgurl'] = soup.find('div', class_="article_index").next_sibling.li.a['href']
+        item['dramaid'] = response.url.split('.html')[0].split('/')[-1]
 
         pans = soup.find_all('a', href=re.compile("baidu"))
         for a in pans:
             item['dramaurl'] = a['href']
+
         return item

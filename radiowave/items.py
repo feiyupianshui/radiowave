@@ -19,3 +19,5 @@ class RadiowaveItem(scrapy.Item):
     category = scrapy.Field()
     #海报
     imgurl = scrapy.Field()
+    #编号
+    dramaid = scrapy.Field()

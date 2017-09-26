@@ -14,15 +14,28 @@ cur = cnx.cursor(buffered=True)
 
 class Sql:
     @classmethod
-    def insert_rw_name(cls, dramaname, category, imgurl):
+    def insert_drama_name(cls, dramaid, dramaname, category, imgurl):
         sql = 'pass'
         value = {}
         cur.execute(sql, value)
         cnx.commit()
 
+    @classmethod
+    def select_name(cls, dramaid):
+        sql = 'pass'
+        value = {}
+        cur.execute(sql, value)
+        return cur.fetchall()[0]
 
     @classmethod
-    def select_rw(cls, url):
+    def insert_baidu_url(cls, dramaid, dramaurl):
+        sql = 'pass'
+        value = {}
+        cur.execute(sql, value)
+        cnx.commit()
+
+    @classmethod
+    def select_url(cls, dramaurl):
         sql = 'pass'
         value = {}
         cur.execute(sql, value)
