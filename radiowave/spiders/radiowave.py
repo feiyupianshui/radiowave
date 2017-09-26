@@ -24,10 +24,11 @@ class myspider(CrawlSpider):
             'redirect_to': 'http://dbfansub.com/',
             'testcookie': '1'
         }
-        return[FormRequest.from_response(response, formdata=formdata, callback=self.after_login)]
+        return [FormRequest.from_response(response, formdata=formdata, callback=self.after_login)]
 
     def after_login(self,response):
-        pass
+        lnk = 'http://dbfansub.com/'
+        return Request(lnk)#这就是开始页面
 
     rules = (
         Rule(LinkExtractor(allow=('\.html',), deny =('weibo','qq','redirect','login',)), callback = 'parse_item', follow=True),
@@ -36,6 +37,7 @@ class myspider(CrawlSpider):
 
     def parse_item(self,response):
         # print(response.url)
+        item = RadiowaveItem()
         soup = BeautifulSoup(response.text, 'html.parser')
         name = soup.find('h1', class_="entry-title h3").get_text()
         category = name[:4].split('【')[1].split('】')[0]
@@ -47,3 +49,4 @@ class myspider(CrawlSpider):
         pans = soup.find_all('a', href=re.compile("baidu"))
         for a in pans:
             item['dramaurl'] = a['href']
+        return item
