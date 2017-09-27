@@ -40,12 +40,14 @@ class myspider(CrawlSpider):
         item = RadiowaveItem()
         soup = BeautifulSoup(response.text, 'html.parser')
         name = soup.find('h1', class_="entry-title h3").get_text()
-        category = name[:4].split('【')[1].split('】')[0]
-        str = '【' + category + '】'
+        category1 = name[:4]
+        category2 = category1.split('【')[1]
+        category3 = category2.split('】')[0]
+        str = '【' + category3 + '】'
         dramaname = name.split('电波字幕组')[0].split(str)[1]
         dramaid = response.url.split('.html')[0].split('/')[-1]
         item['dramaname'] = name.split('电波字幕组')[0].split(str)[1]
-        item['category'] = category
+        item['category'] = category3
         item['dramaid'] = response.url.split('.html')[0].split('/')[-1]
         item['imgurl'] = soup.find('div', class_="article_index").next_sibling.li.a['href']
 
