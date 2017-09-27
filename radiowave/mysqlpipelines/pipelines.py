@@ -18,11 +18,11 @@ class RadiowavePipeline(object):
                 Sql.insert_drama_name(dramaid, dramaname, category, imgurl)
                 print('开始储存剧名')
 
+            dramaurl = item['dramaurl']
             rets = Sql.select_url(dramaurl)
             if rets[0] == 1:
                 print('链接已存在')
             else:
-                dramaurl = item['dramaurl']
                 Sql.insert_baidu_url(dramaid, dramaurl)
                 print('云盘储存完毕')
             return item
