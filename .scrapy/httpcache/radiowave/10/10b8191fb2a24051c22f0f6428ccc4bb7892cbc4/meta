@@ -1,0 +1,1 @@
+{'url': 'https://api.weibo.com/oauth2/authorize?response_type=code&client_id=3564134176&redirect_uri=http%3A%2F%2Fdbfansub.com%2F%3Fconnect%3Dweibo', 'method': 'GET', 'status': 200, 'response_url': 'https://api.weibo.com/oauth2/authorize?response_type=code&client_id=3564134176&redirect_uri=http%3A%2F%2Fdbfansub.com%2F%3Fconnect%3Dweibo', 'timestamp': 1505895044.986584}

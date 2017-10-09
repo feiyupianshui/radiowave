@@ -1,0 +1,8 @@
+Date: Wed, 20 Sep 2017 08:11:14 GMT
+Content-Type: text/html; charset=UTF-8
+X-Powered-By: PHP/5.6.21
+Set-Cookie: dmeng_logged_in_redirect=http%253A%252F%252Fdbfansub.com%252Ftvshow%252F7827.html; expires=Wed, 20-Sep-2017 09:12:01 GMT; Max-Age=3600
+Set-Cookie: qq_state=e500adc6c8da8a79459c14010a225c4f; expires=Wed, 20-Sep-2017 08:22:01 GMT; Max-Age=600
+Location: https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101182667&state=840a27d1d8850667211896e688409f5a&scope=get_user_info%2Cget_info%2Cadd_t%2Cdel_t%2Cadd_pic_t%2Cget_repost_list%2Cget_other_info%2Cget_fanslist%2Cget_idollist%2Cadd_idol%2Cdel_idol&redirect_uri=http%3A%2F%2Fdbfansub.com%2F%3Fconnect%3Dqq
+Server: cloudflare-nginx
+Cf-Ray: 3a13501441da0d43-LAX

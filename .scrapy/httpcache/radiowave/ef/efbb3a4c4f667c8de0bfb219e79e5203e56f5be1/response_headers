@@ -1,0 +1,5 @@
+Server: tws
+Date: Wed, 20 Sep 2017 08:10:51 GMT
+Content-Type: text/html
+Content-Encoding: gzip
+Location: https://graph.qq.com/oauth/show?which=Login&display=pc&response_type=code&client_id=101182667&state=4ba3f00837fc3ad83d7f0a529022568c&scope=get_user_info%2Cget_info%2Cadd_t%2Cdel_t%2Cadd_pic_t%2Cget_repost_list%2Cget_other_info%2Cget_fanslist%2Cget_idollist%2Cadd_idol%2Cdel_idol&redirect_uri=http%3A%2F%2Fdbfansub.com%2F%3Fconnect%3Dqq
