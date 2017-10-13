@@ -1,3 +1,3 @@
 # radiowave
 电波字幕组全站百度云盘下载链接，不包含字幕
-9月30日push的内容一点儿都没显示……sad，可是并每有提醒push失败。
+10/13，基于scrapy-redis的分布式，并维护一个cookies池，让每个请求随机调用一个useragent。
