@@ -69,7 +69,7 @@ DOWNLOADER_MIDDLEWARES = {
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    # 'radiowave.pipelines.RadiowavePipeline': 300,
-    'radiowave.mysqlpipelines.pipelines.RadiowavePipeline': 1,
+   #  'radiowave.mysqlpipelines.pipelines.RadiowavePipeline': 1,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -95,8 +95,8 @@ HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 LOG_LEVEL = 'INFO'
 
-MYSQL_HOSTS = '127.0.0.1'
-MYSQL_USER = 'root'
-MYSQL_PASSWORD = '7H49M343q'
-MYSQL_PORT = '3306'
-MYSQL_DB = 'drama'
+# MYSQL_HOSTS = '127.0.0.1'
+# MYSQL_USER = 'root'
+# MYSQL_PASSWORD = '7H49M343q'
+# MYSQL_PORT = '3306'
+# MYSQL_DB = 'drama'

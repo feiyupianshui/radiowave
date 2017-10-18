@@ -2,7 +2,7 @@
 #_*_coding:utf-8_*_
 import scrapy
 import re
-from ..mysqlpipelines.sql import Sql
+# from ..mysqlpipelines.sql import Sql
 from scrapy.spider import CrawlSpider, Rule, Request
 from scrapy.linkextractors import LinkExtractor
 from scrapy import FormRequest
@@ -40,19 +40,27 @@ class myspider(CrawlSpider):
         item = RadiowaveItem()
         soup = BeautifulSoup(response.text, 'html.parser')
         name = soup.find('h1', class_="entry-title h3").get_text()
+        category = response.url.split('/')[-2]  # 这个是英文的
         category1 = name[:4]
         category2 = category1.split('【')[1]
-        category3 = category2.split('】')[0]
+        category3 = category2.split('】')[0]#这个清洗出来是中文的
         str = '【' + category3 + '】'
+
         dramaname = name.split('电波字幕组')[0].split(str)[1]
         dramaid = response.url.split('.html')[0].split('/')[-1]
         item['dramaname'] = name.split('电波字幕组')[0].split(str)[1]
-        item['category'] = category3
+        item['category'] = category
         item['dramaid'] = response.url.split('.html')[0].split('/')[-1]
-        item['imgurl'] = soup.find('div', class_="article_index").next_sibling.li.a['href']
+        imgurltag = soup.find('img', class_="alignnone")
+        if imgurltag is None:
+            print('图片不存在')
+        else:
+            item['imgurl'] = imgurltag['src']
+
 
         pans = soup.find_all('a', href=re.compile("baidu"))
-        for a in pans:
-            item['dramaurl'] = a['href']
+        item['dramaurl'] = pans
+        # for a in pans:
+        #     item['dramaurl'] = a['href']
 
         return item
