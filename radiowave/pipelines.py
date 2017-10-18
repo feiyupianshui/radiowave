@@ -11,7 +11,7 @@ import datetime
 class RadiowavePipeline(object):
 
     def __init__(self):
-        Client = MongoClient('mongodb://hmq:118667@localhost:27017')
+        Client = MongoClient('mongodb://hmq:118667@localhost:27017/')
         db = Client['radiowave']
         self.save = db['drama']
 
