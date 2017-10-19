@@ -68,7 +68,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   # 'radiowave.pipelines.RadiowavePipeline': 300,
+   'radiowave.pipelines.RadiowavePipeline': 300,
    #  'radiowave.mysqlpipelines.pipelines.RadiowavePipeline': 1,
 }
 

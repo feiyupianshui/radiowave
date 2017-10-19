@@ -20,13 +20,15 @@ class RadiowavePipeline(object):
         dramaname = item['dramaname']
         category = item['category']
         imgurl = item['imgurl']
-        dramaurl = item['dramaurl']
+        dramapage = item['dramapage']
+        # dramaurl = item['dramaurl']
         post = {
             '_id': dramaid,
             '剧名': dramaname,
             '类型': category,
             '海报链接': imgurl,
-            '百度云链接': dramaurl,
+            '详情页面': dramapage,
+            # '百度云链接': dramaurl,
             '储存时间': datetime.datetime.now()
         }
         self.save.insert_one(post)
