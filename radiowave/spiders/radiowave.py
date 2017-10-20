@@ -15,6 +15,7 @@ from radiowave.items import RadiowaveItem
 class myspider(CrawlSpider):
     name = 'radiowave'
     allowed_domain = ['dbfansub.com']
+    dramaurls = []
     start_urls = ['http://dbfansub.com/user/login/?redirect_to=http%3A%2F%2Fdbfansub.com%2Ftvshow%2F8902.html']
 
     def parse_start_url(self, response):
@@ -36,15 +37,11 @@ class myspider(CrawlSpider):
         #放行可用链接
     )
 
-    def parse_item(self,response):
+    def parse_item(self,response):#这里千万不能用parse做函数名
         item = RadiowaveItem()
         soup = BeautifulSoup(response.text, 'html.parser')
         name = soup.find('h1', class_="entry-title h3").get_text()
         category = response.url.split('/')[-2]  # 这个是英文的
-        # category1 = name[:4]
-        # category2 = category1.split('【')[1]
-        # category3 = category2.split('】')[0]#这个清洗出来是中文的
-        # str = '【' + category3 + '】'
         dramaname = name.split('电波字幕组')[0]#.split(str)[1]
         dramaid = response.url.split('.html')[0].split('/')[-1]
         item['dramaname'] = dramaname
@@ -57,6 +54,8 @@ class myspider(CrawlSpider):
         else:
             item['imgurl'] = imgurltag['src']
         item['dramapage'] = response.url
+        # item['dramaurl'] = response.xpath('//*[@id="content"]/div[1]/div[1]/div[2]/p[a="百度云盘" or a="百度网盘"]/a[1]/@href')
+        # 网页不规范，xpath根本跑不动
 
 #我决定url用xpath的extract()方法来取百度云盘的列表，暂时搁置吧
         # pans = soup.find_all('a', href=re.compile("baidu"))
