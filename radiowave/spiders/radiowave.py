@@ -56,11 +56,13 @@ class myspider(CrawlSpider):
         item['dramapage'] = response.url
         # item['dramaurl'] = response.xpath('//*[@id="content"]/div[1]/div[1]/div[2]/p[a="百度云盘" or a="百度网盘"]/a[1]/@href')
         # 网页不规范，xpath根本跑不动
+        item['dramaurl'] = self.dramaurls
+        yield item
 
-#我决定url用xpath的extract()方法来取百度云盘的列表，暂时搁置吧
-        # pans = soup.find_all('a', href=re.compile("baidu"))
-        # for a in pans:
-        #     item['dramaurl'] = a['href']
+    def dramaurl(self, response):
+        soupx = BeautifulSoup(response.text, 'html.parser')
+        dramaurls = soupx.find_all('a', href=re.compile("baidu"))
+        for a in dramaurls:
+            dramaurl = a['href']
+            self.dramaurls.append(img_url)
 
-
-        return item
