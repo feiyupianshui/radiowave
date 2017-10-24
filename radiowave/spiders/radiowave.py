@@ -53,16 +53,14 @@ class myspider(CrawlSpider):
             item['imgurl'] = '图片不存在'
         else:
             item['imgurl'] = imgurltag['src']
-        item['dramapage'] = response.url
+        # item['dramapage'] = response.url
         # item['dramaurl'] = response.xpath('//*[@id="content"]/div[1]/div[1]/div[2]/p[a="百度云盘" or a="百度网盘"]/a[1]/@href')
         # 网页不规范，xpath根本跑不动
-        item['dramaurl'] = self.dramaurls
-        yield item
 
-    def dramaurl(self, response):
-        soupx = BeautifulSoup(response.text, 'html.parser')
-        dramaurls = soupx.find_all('a', href=re.compile("baidu"))
+        dramaurls = soup.find_all('a', href=re.compile("baidu"))
         for a in dramaurls:
             dramaurl = a['href']
-            self.dramaurls.append(img_url)
+            self.dramaurls.append(dramaurl)
+        item['dramaurl'] = self.dramaurls
+        yield item
 
