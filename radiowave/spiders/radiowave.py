@@ -15,7 +15,7 @@ from radiowave.items import RadiowaveItem
 class myspider(CrawlSpider):
     name = 'radiowave'
     allowed_domain = ['dbfansub.com']
-    drama_urls = [] #这个列表是后面用来储存云盘url的
+    # drama_urls = []又失败了
     start_urls = ['http://dbfansub.com/user/login/?redirect_to=http%3A%2F%2Fdbfansub.com%2Ftvshow%2F8902.html']
 
     def parse_start_url(self, response):
@@ -47,18 +47,23 @@ class myspider(CrawlSpider):
         item['dramaname'] = dramaname
         item['category'] = category
         item['dramaid'] = response.url.split('.html')[0].split('/')[-1]
+        item['dramapage'] = response.url
+
         imgurltag = soup.find('img', class_="alignnone")
         if imgurltag is None:
             print('图片不存在')
             item['imgurl'] = '图片不存在'
         else:
             item['imgurl'] = imgurltag['src']
-
-        dramaurls = soup.find_all('a', href=re.compile("baidu"))
-        for a in dramaurls:
-            dramaurl = a['href']
-            self.drama_urls.append(dramaurl)
-        item['dramaurl'] = self.drama_urls
-
+        # item['dramaurl'] = self.drama_urls
         return item
+    #
+    # def drama_url(self,response):
+    #     soupx = BeautifulSoup(response.text, 'html.parser')
+    #     dramaurls = soupx.find_all('a', href=re.compile("baidu"))
+    #     for a in dramaurls:
+    #         dramaurl = a['href']
+    #         self.drama_urls.append(dramaurl)
+
+
 

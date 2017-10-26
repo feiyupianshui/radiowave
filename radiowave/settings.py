@@ -55,7 +55,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   # 'radiowave.middlewares.MyCustomDownloaderMiddleware': 543,
+    # 'radiowave.middlewares.RadioWave': 543,
     'scrapy.contrib.downloadermiddleware.cookies.CookiesMiddleware': 700,
 }
 
@@ -100,3 +100,6 @@ LOG_LEVEL = 'INFO'
 # MYSQL_PASSWORD = '7H49M343q'
 # MYSQL_PORT = '3306'
 # MYSQL_DB = 'drama'
+
+IMAGES_STORE = r'F:\radiowave\\'
+IMAGES_EXPIRES = 30

@@ -27,9 +27,19 @@ class RadiowavePipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
         # :param item: spider.py中返回的item
         imgurl = item['imgurl']
-        yield Request(imgurl,)
+        yield Request(imgurl, meta={'item': item})
 
     def item_completed(self, results,item, info):
-        image_paths =
-
+        image_paths = [x['path'] for ok, x in results if ok]
+        if not image_paths:
+            raise DropItem("Item contains no images")
         return item
+
+def strip(path):
+    path = re.sub(r'[？\\*|“<>:/]', '', str(path))
+    return path
+#
+# if __name__ == "__main__":
+#     a = '我是一个？\*|“<>:/错误的字符串'
+#     print(strip(a))
+
