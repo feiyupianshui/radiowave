@@ -26,7 +26,8 @@ class RadiowavePipeline(ImagesPipeline):
 
     def get_media_requests(self, item, info):
         # :param item: spider.py中返回的item
-        yield Request(imgurl)
+        imgurl = item['imgurl']
+        yield Request(imgurl,)
 
     def item_completed(self, results,item, info):
         image_paths =

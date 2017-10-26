@@ -22,4 +22,4 @@ class RadiowaveItem(scrapy.Item):
     #编号
     dramaid = scrapy.Field()
     #详情页面
-    # dramapage = scrapy.Field()
+    dramapage = scrapy.Field()
