@@ -40,14 +40,15 @@ class myspider(CrawlSpider):
     def parse_item(self,response):#这里千万不能用parse做函数名
         item = RadiowaveItem()
         soup = BeautifulSoup(response.text, 'html.parser')
-        name = soup.find('h1', class_="entry-title h3").get_text()
-        category = response.url.split('/')[-2]  # 这个是英文的
-        dramaname = name.split('电波字幕组')[0]#.split(str)[1]
+        # name = soup.find('h1', class_="entry-title h3").get_text()
+        # category = response.url.split('/')[-2]  # 这个是英文的
+        # dramaname = name.split('电波字幕组')[0]#.split(str)[1]
         dramaid = response.url.split('.html')[0].split('/')[-1]
-        item['dramaname'] = dramaname
-        item['category'] = category
+        # item['dramaname'] = dramaname
+        # item['category'] = category
         item['dramaid'] = response.url.split('.html')[0].split('/')[-1]
-        item['dramapage'] = response.url
+        # item['dramapage'] = response.url
+        # item['dramaurl'] = self.drama_urls
 
         imgurltag = soup.find('img', class_="alignnone")
         if imgurltag is None:
@@ -55,7 +56,7 @@ class myspider(CrawlSpider):
             item['imgurl'] = '图片不存在'
         else:
             item['imgurl'] = imgurltag['src']
-        # item['dramaurl'] = self.drama_urls
+
         return item
     #
     # def drama_url(self,response):

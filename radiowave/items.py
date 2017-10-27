@@ -14,12 +14,12 @@ class RadiowaveItem(scrapy.Item):
     #下载链接
     # dramaurl = scrapy.Field()#想弄成一个列表
     #片名
-    dramaname = scrapy.Field()
+    # dramaname = scrapy.Field()
     #种类
-    category = scrapy.Field()
+    # category = scrapy.Field()
     #海报
     imgurl = scrapy.Field()
     #编号
     dramaid = scrapy.Field()
     #详情页面
-    dramapage = scrapy.Field()
+    # dramapage = scrapy.Field()

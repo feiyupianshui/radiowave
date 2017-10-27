@@ -21,7 +21,7 @@ class RadiowavePipeline(ImagesPipeline):
         folder = 'radiowave'
         image_guid = item['dramaid']
         image_strip = image_guid.strip()#参数为空时默认去除首尾的空白符空白符（包括'\n'，'\r'，'\t'，' ')
-        filename = u'full/{0}/{1}'.format(folder,image_strip)
+        filename = u'full/{0}/{1}'.format(folder,image_strip) + '.jpg'
         return filename
 
     def get_media_requests(self, item, info):
